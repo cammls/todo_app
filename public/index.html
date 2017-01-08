@@ -1,0 +1,84 @@
+<!-- index.html -->
+<!DOCTYPE html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="Todo">
+<head>
+  <!-- META -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+  <!-- Bootstrap CSS -->
+  <title>Todo App</title>
+  <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+
+</head>
+<body  ng-controller="HomeController">
+  <!-- <h2>{{ todolist.name }}</h2> -->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <span class="navbar-brand">{{todolist.name}}</span>
+        <div id="navbar" class="navbar-collapse collapse">
+          <!-- <form class="navbar-form navbar-right">
+          <input type="text" class="form-control" ng-model="search" placeholder="Search task">
+        </form> -->
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-'+alert.type" close="closeAlert()" dismiss-on-timeout="4000">{{alert.msg}}</div>
+
+  <!-- <p>Search task:<input type="text" ng-model="search"></p> -->
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+      <div class="input-group">
+        <input type="text" class="form-control" ng-model="search" placeholder="Search task...">
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-search"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+      <table class="table table-hover">
+
+        <tbody ng-repeat="task in todolist.tasks | filter: search | orderBy: 'status'">
+          <tr>
+            <td>
+              <checkbox larger class="btn-success" ng-model="task.status" ng-checked="{{ task.status}}"> </checkbox>
+              {{ task.name}}
+            </td>
+            <td>
+              <button  class="btn btn-danger" type="button" ng-click="DeleteTask(task.name)">Delete task</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 text-center">
+      <form  ng-submit="NewTask()">
+        Add a new task:<input type="text" ng-model="task.name">
+        <input class="btn btn-primary" type="submit" value="Add">
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="vendors/angular/angular.min.js"></script><!-- load angular -->
+<script src="vendors/ngstorage/ngStorage.min.js"></script><!-- load ngStorage -->
+<script src="vendors/angular-bootstrap/ui-bootstrap-tpls.min.js"></script><!-- load Bootstrap for angular -->
+<script src="vendors/angular-bootstrap-checkbox/angular-bootstrap-checkbox.js"></script><!-- load custom checkboxes-->
+<script src="core.js"></script>
+</body>

@@ -1,0 +1,25 @@
+{
+  "name": "todo",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "cammls <camille.malis@coding-academy.fr>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./public/vendors/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.1",
+    "ngstorage": "^0.3.11",
+    "angular-bootstrap": "^2.4.0",
+    "bootstrap": "^3.3.7",
+    "angular-bootstrap-checkbox": "^0.5.0"
+  }
+}
