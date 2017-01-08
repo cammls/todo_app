@@ -4,8 +4,9 @@ var app      = express();
 
 app.use(express.static('./public')); //bug sans ca! tres important
 //start server
-var port_number = server.listen(process.env.PORT || 3000);
-app.listen(port_number);
+// var port_number = server.listen(process.env.PORT || 3000);
+// app.listen(port_number);
+app.listen(process.env.PORT || 80888)
 // app.listen(8088, function () {
 //   console.log('Server listening on port 8088')
 // })
